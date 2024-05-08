@@ -1,10 +1,8 @@
 import sqlite3
-from flask import request, render_template
 
-@app.route('index.html', methods=['POST'])
-def get_user_info():
- username = request.form['username']
+def get_user_info(user_input):
  # Connect to the database
+
  conn = sqlite3.connect('users.db')
  cursor = conn.cursor()
 
@@ -15,7 +13,7 @@ def get_user_info():
  # Fetch and return the results
  results = cursor.fetchall()
  conn.close()
- return render_template('index.html', data=results)
+ return results
 
 # Example usage:
 user_input = input("Enter your username: ")
