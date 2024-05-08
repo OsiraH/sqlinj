@@ -7,7 +7,7 @@ def get_user_info(user_input):
  cursor = conn.cursor()
 
  # Build and execute a SQL query to retrieve user information
- query = f"SELECT * FROM users WHERE username = '{username}'"
+ query = f"SELECT * FROM users WHERE name = '{user_input}'"
  cursor.execute(query)
 
  # Fetch and return the results
@@ -18,4 +18,9 @@ def get_user_info(user_input):
 # Example usage:
 user_input = input("Enter your username: ")
 user_info = get_user_info(user_input)
-print(user_info)
+
+#implicit booleanness in python
+if not user_info:
+    print("no user found")
+else:
+    print(user_info)
